@@ -23,8 +23,8 @@ The goal is to demonstrate the practical application and performance influence o
 
 #### PostgreSQL
 
-| Section | Query Style | Performance (No Index) | Performance (With Index) |
-| :--- | :--- | :--- | :--- |
+| Query Style | Performance (No Index) | Performance (With Index) |
+| :--- | :--- | :--- |
 | **Without Heuristics (NH)** |  5.1810 seconds |  4.6517 seconds |
 | **With Heuristics (CH)** |  7.8777 seconds |  6.8353 seconds |
 
@@ -46,7 +46,8 @@ JOIN
 GROUP BY 
     c.c_custkey, c.c_name, c.c_address, c.c_phone, n.n_name, r.r_name
 ORDER BY 
-    c.c_custkey; ```
+    c.c_custkey;
+```
 
 ##### Contains Heuristics (CH)
 ```
