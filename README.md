@@ -67,8 +67,8 @@ JOIN
 ```
 
 #### Commercial Database
-| Query Style | Performance (No Index) | Performance (With Index) |
-| :--- | :--- | :--- | :--- |
+| Performance (No Index) | Performance (With Index) |
+| :--- | :--- | :--- |
 | **Without Heuristics (NH)** |  6.4708 seconds |  6.2918 seconds |
 | **With Heuristics (CH)** |  6.0340 seconds |  6.0708 seconds |
 
@@ -114,8 +114,8 @@ JOIN H_Region r ON n.n_regionkey = r.r_regionkey;
 ### Question: List all orders whose total price is greater than the total price of every order with priority '2-HIGH'.
 #### PostgreSQL
 
-| Section | Query Style | Performance (No Index) | Performance (With Index) |
-| :--- | :--- | :--- | :--- |
+| Query Style | Performance (No Index) | Performance (With Index) |
+| :--- | :--- | :--- |
 | **Without Heuristics (NH)** |  7.2391 seconds |  1.1621 seconds |
 | **With Heuristics (CH)** |  3.7480 seconds |  0.8196 seconds |
 
@@ -144,8 +144,8 @@ WHERE o1.o_totalprice > (
 #### Commercial Database
 The Commercial Database optimizer automatically rewrites the ALL clause into a MAX operation internally.
 
-| Section | Query Style | Performance (No Index) | Performance (With Index) |
-| :--- | :--- | :--- | :--- |
+|  Query Style | Performance (No Index) | Performance (With Index) |
+|  :--- | :--- | :--- |
 | **Original Query (CH)** |   0.4837 seconds |  0.1933 seconds |
 
 ##### Original Query (CH)
@@ -163,8 +163,8 @@ WHERE o1.o_totalprice > (
 ### Question: Find all orders where the total price is greater than at least one high-priority order.
 #### PostgreSQL
 
-| Section | Query Style | Performance (No Index) | Performance (With Index) |
-| :--- | :--- | :--- | :--- |
+| Query Style | Performance (No Index) | Performance (With Index) |
+| :--- | :--- | :--- |
 | **Without Heuristics (NH)** |  162.3277 seconds |  161.5852 seconds |
 | **With Heuristics (CH)** |  28.0556 seconds |  26.3579 seconds |
 
@@ -192,8 +192,8 @@ WHERE o_totalprice > (
 #### Commercial Database
 The Commercial Database optimizer  automatically rewrites the ANY clause into a MIN operation internally.
 
-| Section | Query Style | Performance (No Index) | Performance (With Index) |
-| :--- | :--- | :--- | :--- |
+| Query Style | Performance (No Index) | Performance (With Index) |
+| :--- | :--- | :--- |
 | **Original Query (CH)** |  78.9118 seconds |  81.0501 seconds |
 
 ##### Original Query (CH)
@@ -209,8 +209,8 @@ WHERE o.o_totalprice > (
 ## 4. Move function applied to a column (H4)
 ### Question: Show me all the rows from the lineitem table where the l_quantity value, when converted to text, is equal to '28'.
 #### PostgreSQL
-| Section | Query Style | Performance (No Index) | Performance (With Index) |
-| :--- | :--- | :--- | :--- |
+| Query Style | Performance (No Index) | Performance (With Index) |
+| :--- | :--- | :--- |
 | **Without Heuristics (NH)** |  26.5019 seconds |  23.0724 seconds |
 | **With Heuristics (CH)** |  23.7603 seconds |  21.0829 seconds |
 
@@ -228,8 +228,8 @@ WHERE l_quantity = CAST('28' AS DOUBLE PRECISION);
 ```
 
 #### Commercial Database
-| Section | Query Style | Performance (No Index) | Performance (With Index) |
-| :--- | :--- | :--- | :--- |
+| Query Style | Performance (No Index) | Performance (With Index) |
+| :--- | :--- | :--- |
 | **Without Heuristics (NH)** |  10.2406 seconds |  9.9219 seconds |
 | **With Heuristics (CH)** |  8.0105 seconds |  8.6471 seconds |
 
@@ -249,8 +249,8 @@ WHERE l_quantity = CAST('28' AS FLOAT(53));
 ## 5. Eliminate unnecessary DISTINCT (H5)
 ### Question: Show me a clean list of all orders with no duplicates, including each order's ID, total price, and the customer's name who placed it - sorted by order number.
 #### PostgreSQL
-| Section | Query Style | Performance (No Index) | Performance (With Index) |
-| :--- | :--- | :--- | :--- |
+|  Query Style | Performance (No Index) | Performance (With Index) |
+|:--- | :--- | :--- |
 | **Without Heuristics (NH)** |  119.7125 seconds |  118.8553 seconds |
 | **With Heuristics (CH)** |  111.4551 seconds |  112.0633 seconds |
 
@@ -276,8 +276,8 @@ ORDER BY o.o_orderkey;
 ```
 
 #### Commercial Database
-| Section | Query Style | Performance (No Index) | Performance (With Index) |
-| :--- | :--- | :--- | :--- |
+| Query Style | Performance (No Index) | Performance (With Index) |
+| :--- | :--- | :--- |
 | **Without Heuristics (NH)** |  45.4891 seconds |  45.0368 seconds |
 | **With Heuristics (CH)** |  44.0442 seconds |  45.0508 seconds |
 
@@ -309,8 +309,8 @@ ORDER BY
 ## 6. Avoid correlated subqueries (H6)
 ### Question: For each customer, what is the date of their most recent order and the total price of that order?
 #### PostgreSQL
-| Section | Query Style | Performance (No Index) | Performance (With Index) |
-| :--- | :--- | :--- | :--- |
+|  Query Style | Performance (No Index) | Performance (With Index) |
+| :--- | :--- | :--- |
 | **Without Heuristics (NH)** |  174.5616 seconds |  26.5953 seconds |
 | **With Heuristics (CH)** |  16.0939 seconds |  7.4452 seconds |
 
@@ -356,8 +356,8 @@ ORDER BY c.c_custkey;
 ```
 
 #### Commercial Database
-| Section | Query Style | Performance (No Index) | Performance (With Index) |
-| :--- | :--- | :--- | :--- |
+| Query Style | Performance (No Index) | Performance (With Index) |
+|  :--- | :--- | :--- |
 | **Without Heuristics (NH)** |  9.8730 seconds |  7.3285 seconds |
 | **With Heuristics (CH)** |  0.7893 seconds |  0.5780 seconds	 |
 
@@ -415,8 +415,8 @@ ORDER BY c.c_custkey;
 ## 7. Propagate filter conditions across JOIN keys (H7)
 ### Question: Show supplier id and name for suppliers from nation key 15, and include the nation name.
 #### PostgreSQL
-| Section | Query Style | Performance (No Index) | Performance (With Index) |
-| :--- | :--- | :--- | :--- |
+|  Query Style | Performance (No Index) | Performance (With Index) |
+|  :--- | :--- | :--- |
 | **Without Heuristics (NH)** |  0.0081 seconds |  N/A |
 | **With Heuristics (CH)** |   0.0087 seconds |  N/A |
 
@@ -436,8 +436,8 @@ WHERE s.s_nationkey = 15 AND n.n_nationkey = 15;
 ```
 
 #### Commercial Database
-| Section | Query Style | Performance (No Index) | Performance (With Index) |
-| :--- | :--- | :--- | :--- |
+|  Query Style | Performance (No Index) | Performance (With Index) |
+|  :--- | :--- | :--- |
 | **Without Heuristics (NH)** |  0.0123 seconds |  0.0108 seconds |
 | **With Heuristics (CH)** |  0.0135 seconds |  0.0105 seconds	 |
 
@@ -472,8 +472,8 @@ WHERE
 ## 8. Rewrite IN as OR conditions (H8)
 ### Question: Which customers are from either 'GERMANY', 'FRANCE', or 'BRAZIL'?
 #### PostgreSQL
-| Section | Query Style | Performance (No Index) | Performance (With Index) |
-| :--- | :--- | :--- | :--- |
+|  Query Style | Performance (No Index) | Performance (With Index) |
+|  :--- | :--- | :--- |
 | **Without Heuristics (NH)** |  1.0642 seconds |  0.6241 seconds |
 | **With Heuristics (CH)** |   0.9135 seconds |  0.6383 seconds |
 
@@ -494,8 +494,8 @@ WHERE n.n_name = 'GERMANY              ' OR n.n_name = 'FRANCE                  
 ```
 
 #### Commercial Database
-| Section | Query Style | Performance (No Index) | Performance (With Index) |
-| :--- | :--- | :--- | :--- |
+|  Query Style | Performance (No Index) | Performance (With Index) |
+|  :--- | :--- | :--- |
 | **Without Heuristics (NH)** |  1.3299 seconds |  0.9238 seconds |
 | **With Heuristics (CH)** |  1.1021 seconds |   0.8467 seconds	 |
 
