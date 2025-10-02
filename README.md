@@ -23,7 +23,7 @@ The goal is to demonstrate the practical application and performance influence o
 
 #### PostgreSQL
 
-| Query Style | Performance (No Index) | Performance (With Index) |
+| Performance (No Index) | Performance (With Index) |
 | :--- | :--- | :--- |
 | **Without Heuristics (NH)** |  5.1810 seconds |  4.6517 seconds |
 | **With Heuristics (CH)** |  7.8777 seconds |  6.8353 seconds |
@@ -67,6 +67,11 @@ JOIN
 ```
 
 #### Commercial Database
+| Performance (No Index) | Performance (With Index) |
+| :--- | :--- | :--- |
+| **Without Heuristics (NH)** |  6.4708 seconds |  6.2918 seconds |
+| **With Heuristics (CH)** |  6.0340 seconds |  6.8353 seconds |
+
 | Performance (No Index) | Performance (With Index) |
 | :--- | :--- | :--- |
 | **Without Heuristics (NH)** |  6.4708 seconds |  6.2918 seconds |
