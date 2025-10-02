@@ -1,4 +1,4 @@
-# PostgreSQL and Commercial DB - Unapplied Query Optimization Heuristics
+# PostgreSQL and Commercial DB - All examples
 
 This document provides a set of analytical questions and their corresponding SQL queries, illustrating the impact of various **SQL rewriting heuristics** on query performance across **PostgreSQL** and a **Commercial Database (SQL Server)**. The queries presented here were considered for an accompanying article but were set aside to maintain focus.
 
