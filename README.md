@@ -66,7 +66,7 @@ JOIN
 ```
 
 #### Commercial Database
-| Section | Query Style | Performance (No Index) | Performance (With Index) |
+| Query Style | Performance (No Index) | Performance (With Index) |
 | :--- | :--- | :--- | :--- |
 | **Without Heuristics (NH)** |  6.4708 seconds |  6.2918 seconds |
 | **With Heuristics (CH)** |  6.0340 seconds |  6.0708 seconds |
